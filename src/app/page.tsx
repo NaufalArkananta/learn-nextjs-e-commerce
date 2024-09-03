@@ -1,9 +1,15 @@
+import HeroSection from '@/components/herosection'
+import ProductsList from '@/app/detailproduct/page'
 import Image from 'next/image'
+import FlashSale from '@/components/flashsale'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Hello REK!!
+    <main className="">
+      {/* <h1 className="font-bold">Paling Populer</h1>
+      <ProductsList /> */}
+      <HeroSection></HeroSection>
+      <FlashSale></FlashSale>
     </main>
   )
 }
