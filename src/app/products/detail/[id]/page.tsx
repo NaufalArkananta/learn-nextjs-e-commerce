@@ -1,42 +1,46 @@
 import Image from "next/image"
 import dog from "/public/kirek.jpg"
+import { getData } from "@/services/products"
 
-export default function DetailProductPage() {
+export default async function DetailProductPage(props: any) {
+    const {params} = props
+    const product = await getData(`http://localhost:3000/api/product/?id=`+params.id)
+    console.log(product)
     return (
         <div className="flex justify-center  mx-36 mt-5 gap-32 ">
             <div>
-                <Image
+                <img
                     className="h-[350px] w-[350px] rounded-lg"
-                    src={dog}
+                    src={product.data.image}
                     width={300}
                     height={300}
                     alt="Picture of the author"
                 />
                 <div className="flex gap-5 overflow-x-auto mt-5">
-                    <Image
+                    <img
                         className="h-[85px] w-[85px] mt-5 rounded-lg"
-                        src={dog}
+                        src={product.data.image}
                         width={300}
                         height={300}
                         alt="Picture of the author"
                     />
-                    <Image
+                    <img
                         className="h-[85px] w-[85px] mt-5 rounded-lg"
-                        src={dog}
+                        src={product.data.image}
                         width={300}
                         height={300}
                         alt="Picture of the author"
                     />
-                    <Image
+                    <img
                         className="h-[85px] w-[85px] mt-5 rounded-lg"
-                        src={dog}
+                        src={product.data.image}
                         width={300}
                         height={300}
                         alt="Picture of the author"
                     />
-                    <Image
+                    <img
                         className="h-[85px] w-[85px] mt-5 rounded-lg"
-                        src={dog}
+                        src={product.data.image}
                         width={300}
                         height={300}
                         alt="Picture of the author"
@@ -44,7 +48,7 @@ export default function DetailProductPage() {
                 </div>
             </div>
             <div className="pl-5">
-                <h1 className="text-3xl font-bold">Kirek Kucing</h1>
+                <h1 className="text-3xl font-bold">{product.data.title}</h1>
                 <div className="flex items-center">
                     <p className="text-sm">Terjual <span className="text-gray-400">(100)</span></p>
                     <div className="flex justify-center px-5">
@@ -56,7 +60,7 @@ export default function DetailProductPage() {
                     <p>Komentar<span className="text-gray-400">(100)</span></p>
                 </div>
                 <div className="pt-5">
-                    <h1 className="text-3xl font-bold">Rp.3.000.000.00</h1>
+                    <h1 className="text-3xl font-bold">${product.data.price}</h1>
                 </div>
                 <div className="pt-10">
                     <h4 className="text-lg font-semibold">Pilih Warna: <span className="font-normal text-gray-400">Putih</span></h4>
@@ -85,9 +89,9 @@ export default function DetailProductPage() {
                 </div>
                 <hr />
                 <div className="flex pt-5">
-                    <Image
+                    <img
                         className="h-[60px] w-[60px] rounded-lg"
-                        src={dog}
+                        src={product.data.image}
                         width={300}
                         height={300}
                         alt="Picture of the author"
@@ -103,9 +107,9 @@ export default function DetailProductPage() {
                 <div className="pt-5">
                     <h1 className="font-bold text-lg">Atur jumlah dan catatan</h1>
                     <div className="flex items-center gap-5 py-5">
-                    <Image
+                    <img
                             className="h-[50px] w-[50px] rounded-lg"
-                            src={dog}
+                            src={product.data.image}
                             width={300}
                             height={300}
                             alt="Picture of the author"

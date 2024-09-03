@@ -1,19 +1,30 @@
 "use client"
 
+import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { json } from "stream/consumers";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-
-    const handleLogin = (e: any) => {
+    const router = useRouter()
+    const handleLogin = async (e: any) => {
         e.preventDefault()
-        fetch('/api/auth/login', {
-            method: 'POST',
-            body: JSON.stringify({
-                email: e.currentTarget.email.value,
-                password: e.currentTarget.password.value
+        try{
+            const res = await signIn("credentials",{
+                redirect: false,
+                email: e.target.email.value,
+                password: e.target.password.value,
+                callBackUrl: "/"
             })
-        })
+            
+            if(!res?.error) {
+                router.push("/products")
+            }else{
+                console.log(res.error)
+            }
+
+        } catch(err) {
+            console.log(err)
+        }
     }
 
     return (

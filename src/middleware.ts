@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 export async function middleware(req: NextRequest, res: NextResponse) {
-    const isLogin = false
-
+    const isLogin = true
     if(!isLogin) {
         return NextResponse.redirect(new URL("/login", req.url))
     }
@@ -17,5 +16,5 @@ export async function middleware(req: NextRequest, res: NextResponse) {
 export const config = {
     // matcher: "/dashboard/:path*" //semua yang ada di dashboard
     // matcher: "/dashboard/product" //hanya halaman product
-    matcher: ["/dashboard/product","/about"] //hanya halaman product
+    matcher: ["/dashboard","/about"] //hanya halaman product
 }

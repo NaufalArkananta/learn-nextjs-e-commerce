@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { json } from "stream/consumers"
 
 export default function AdminProductPage() {
     const [status,setStatus] = useState("")
@@ -22,7 +21,7 @@ export default function AdminProductPage() {
     }
 
     return(
-        <div>
+        <div className="w-full h-96 bg-gray-300 rounded-xl flex justify-center items-center mx-5">
             <h1>{status}</h1>
             <button className="bg-blue-600 rounded-xl p-10" onClick={revalidate}>Refresh</button>
         </div>

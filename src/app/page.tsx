@@ -1,5 +1,5 @@
 import HeroSection from '@/components/herosection'
-import ProductsList from '@/app/detailproduct/page'
+import ProductsList from '@/app/products/detail/[id]/page'
 import Image from 'next/image'
 import FlashSale from '@/components/flashsale'
 
